@@ -1,0 +1,43 @@
+.weather {
+  &__footer {
+    padding: 15px 0;
+    background-color: rgba(190, 177, 177, 0.3);
+    border-radius: 8px;
+  }
+
+  &__footer-list {
+    display: flex;
+  }
+
+  &__footer-item {
+    width: 20%;
+    padding: 10px;
+    text-align: center;
+  }
+
+  &__footer-item + &__footer-item {
+    position: relative;
+
+    &:after {
+      content: "";
+      width: 2px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #ffffff;
+      z-index: 2;
+    }
+  }
+
+  &__footer-title {
+    margin-bottom: 30px;
+  }
+
+  &__footer-img {
+    margin-bottom: 30px;
+  }
+
+  &__footer-temperature {
+  }
+}

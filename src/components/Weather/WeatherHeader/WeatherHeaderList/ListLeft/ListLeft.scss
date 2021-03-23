@@ -1,0 +1,13 @@
+.list-left {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__item {
+    width: 50%;
+  }
+
+  &__img{
+    margin-bottom: 10px;
+  }
+
+}

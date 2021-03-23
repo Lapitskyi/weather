@@ -1,0 +1,27 @@
+.weather {
+  margin-top: 50px;
+
+  &__inner {
+    max-width: 700px;
+    background: linear-gradient(#547AB9, #55CEAF);
+    margin: 0 auto;
+    padding: 50px;
+    color: #ffffff;
+
+  }
+
+  &__title {
+    font-size: 30px;
+    font-weight: 600;
+
+    letter-spacing: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+  }
+  &__header+&__footer{
+    margin-top: 20px;
+  }
+
+
+}

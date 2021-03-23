@@ -1,0 +1,23 @@
+.weather {
+  &__header {
+    display: flex;
+  }
+
+  &__header-item {
+    width: 50%;
+    padding: 15px;
+    background-color: rgba(190, 177, 177, 0.3);
+    border-radius: 8px;
+  }
+
+  &__header-item + &__header-item {
+    margin-left: 20px;
+  }
+  
+  &__header-title{
+    text-align: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ffffff;
+  }
+}

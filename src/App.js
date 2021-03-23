@@ -1,14 +1,10 @@
 import './App.scss';
-import WeatherContainer from "./components/weather/WeatherContainer";
-
+import WeatherContainer from "./components/Weather/WeatherContainer";
 
 
 const App = () => {
     return (
-        <div className="container">
-            <WeatherContainer/>
-        </div>
-
+        <WeatherContainer/>
     )
 }
 
