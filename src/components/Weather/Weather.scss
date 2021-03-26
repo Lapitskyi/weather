@@ -17,11 +17,14 @@
     letter-spacing: 5px;
     text-align: center;
     text-transform: uppercase;
+    margin-top: 15px;
     margin-bottom: 50px;
   }
-  &__header+&__footer{
+
+  &__header + &__footer {
     margin-top: 20px;
   }
 
 
 }
+

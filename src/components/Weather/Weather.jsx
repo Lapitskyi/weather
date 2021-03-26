@@ -3,15 +3,27 @@ import "./Weather.scss"
 
 import WeatherFooter from "./WeatherFooter/WeatherFooter";
 import WeatherHeader from "./WeatherHeader/WeatherHeader";
+import SearchCity from "./SearchCity/SearchCity";
 
 
 const Weather = (props) => {
+
     return (
         <div className="weather">
             <div className="container">
                 <div className="weather__inner">
-                    <h2 className="weather__title">Weather sity</h2>
-                    <WeatherHeader/>
+
+                    <SearchCity
+                        inputText={props.inputText}
+                        onInputCity={props.onInputCity}
+                        onSubmitCity={props.onSubmitCity}
+                    />
+
+                    <h2 className="weather__title">Weather {props.currentWeather ? props.currentWeather.name : "city"}</h2>
+
+                    <WeatherHeader
+                        currentWeather={props.currentWeather}
+                    />
                     <WeatherFooter/>
                 </div>
             </div>

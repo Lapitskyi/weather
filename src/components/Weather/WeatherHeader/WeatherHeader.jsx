@@ -5,11 +5,16 @@ import ListRigth from "./WeatherHeaderList/ListRigth/ListRight";
 
 
 const WeatherHeader = (props) => {
+
     return (
         <div className="weather__header">
             <div className="weather__header-item">
                 <h3 className="weather__header-title">losal weather report</h3>
-                <ListLeft/>
+
+                <ListLeft
+                    currentWeather={props.currentWeather}
+                />
+
             </div>
 
             <div className="weather__header-item">

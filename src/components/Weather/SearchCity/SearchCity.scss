@@ -1,0 +1,41 @@
+form {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.form__label {
+}
+
+.form__input {
+  padding: 3px 5px;
+  height: 23px;
+  border: 1px solid #eaebed;
+
+  &:focus {
+    outline: none;
+    border-color: #b3281a;
+  }
+}
+
+.form__btn {
+  width: 30px;
+  height: 23px;
+  position: relative;
+  z-index: 1;
+  background-color: #777777;
+  border: 1px solid #777777;
+}
+
+.form__icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  fill: #ffffff;
+  stroke: #ffffff;
+  z-index: 5;
+}
