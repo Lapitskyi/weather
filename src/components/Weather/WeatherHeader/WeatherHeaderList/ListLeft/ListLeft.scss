@@ -1,17 +1,28 @@
 .list-left {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr auto;
+
 
   &__item {
-    width: 50%;
+
 
   }
 
-  &__img{
+  &__img {
     margin-bottom: 10px;
   }
-  &__temperature{
-    font-size: 20px;
+
+&__date{
+  line-height: 3;
+}
+  &__wind {
+    font-size: 16px;
+  }
+
+  &__temperature {
+    text-align: center;
+    font-size: 16px;
   }
 
 }

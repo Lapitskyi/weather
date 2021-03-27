@@ -24,7 +24,11 @@ const Weather = (props) => {
                     <WeatherHeader
                         currentWeather={props.currentWeather}
                     />
-                    <WeatherFooter/>
+
+
+                    <WeatherFooter
+                        forecastWeather={props.forecastWeather}
+                    />
                 </div>
             </div>
         </div>

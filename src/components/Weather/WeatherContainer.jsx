@@ -1,8 +1,7 @@
 import React from 'react';
 import Weather from "./Weather";
 import {connect} from "react-redux";
-import { addInputCity, getWeather} from "../../redux/weather-reducer";
-
+import {addInputCity, getWeather, getWeatherForecast} from "../../redux/weather-reducer";
 
 
 const WeatherContainer = (props) => {
@@ -14,9 +13,10 @@ const WeatherContainer = (props) => {
     const onSubmitCity = (e) => {
         e.preventDefault();
         let city = props.inputText.toLowerCase();
-
-        props.getWeather(city);
-
+        if (city !== '') {
+            return props.getWeather(city),
+            props.getWeatherForecast(city)
+        }
     }
 
     return <Weather
@@ -29,11 +29,13 @@ const WeatherContainer = (props) => {
 let mapStateToProps = (state) => {
     return {
         inputText: state.weathers.inputText,
-        currentWeather:state.weathers.currentWeather
+        currentWeather: state.weathers.currentWeather,
+        forecastWeather: state.weathers.forecastWeather
     }
 }
 
-export default connect(mapStateToProps,{
+export default connect(mapStateToProps, {
     addInputCity,
-    getWeather
+    getWeather,
+    getWeatherForecast
 })(WeatherContainer)

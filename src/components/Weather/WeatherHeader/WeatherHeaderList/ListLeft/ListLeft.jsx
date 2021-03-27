@@ -3,7 +3,7 @@ import './ListLeft.scss';
 
 
 const ListLeft = (props) => {
-    // const {weather, wind} = props.currentWeather
+
     return (
 
         <ul className="list-left">
@@ -15,19 +15,22 @@ const ListLeft = (props) => {
                      alt=""/>
             </li>
             <li className="list-left__item">
-                <div className="list-left__date">{props.currentWeather
-                    ? props.currentWeather.weather[0]['description']
-                    : 'SUNDAY/ SUNNY'
-                }</div>
+                <div className="list-left__date">
+                    {props.currentWeather
+                        ? `${new Date(props.currentWeather.dt * 1000).toLocaleString()}
+                        ${props.currentWeather.weather[0]['description']}`
+                        : ('SUNDAY/ SUNNY')
+                    }</div>
             </li>
             <li className="list-left__item">
-                <div className="list-left__param"> {props.currentWeather
+                <div className="list-left__wind"> {props.currentWeather
                     ? `${props.currentWeather.wind.speed} m/s ${props.currentWeather.wind.deg} deg`
                     : '0m/s 0deg'}</div>
             </li>
             <li className="list-left__item">
                 <div className="list-left__temperature">{props.currentWeather
-                    ? `${Math.round(props.currentWeather.main.temp - 273)} \u00B0C /${Math.round((props.currentWeather.main.temp - 273.15) * 9 / 5 + 32)}\u00B0F`
+                    ? `${Math.round(props.currentWeather.main.temp - 273)} \u00B0C 
+                       ${Math.round((props.currentWeather.main.temp - 273.15) * 9 / 5 + 32)}\u00B0F`
                     : "0C/0F"
                 }</div>
             </li>

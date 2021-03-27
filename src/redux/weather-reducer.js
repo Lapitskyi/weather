@@ -3,9 +3,11 @@ import {weatherAPI} from "../API/api";
 
 const ADD_INPUT_CITY = 'ADD_INPUT_CITY';
 const ADD_CURRENT_WEATHER = 'ADD_CURRENT_WEATHER';
+const ADD_FORECAST_WEATHER = 'ADD_FORECAST_WEATHER';
 
 let initialState = {
     currentWeather: null,
+    forecastWeather: null,
     inputText: ''
 };
 
@@ -25,6 +27,13 @@ const weatherReducer = (state = initialState, action) => {
                 inputText: ''
             }
 
+        case ADD_FORECAST_WEATHER:
+            return{
+                ...state,
+                forecastWeather:[action.forecastWeather],
+                inputText: ''
+            }
+
         default:
             return state;
     }
@@ -33,6 +42,7 @@ const weatherReducer = (state = initialState, action) => {
 
 export const addInputCity = (text) => ({type: ADD_INPUT_CITY, text})
 export const addCurrentWeather = (currentWeather) => ({type: ADD_CURRENT_WEATHER, currentWeather})
+export const addForecastWeather = (forecastWeather) => ({type: ADD_FORECAST_WEATHER, forecastWeather})
 
 export const getWeather = (city) => {
 
@@ -40,6 +50,15 @@ export const getWeather = (city) => {
         weatherAPI.getCurrentWeather(city)
             .then(data => {
                 dispatch(addCurrentWeather(data))
+            })
+    }
+}
+
+export const getWeatherForecast = (city) => {
+    return (dispatch) => {
+        weatherAPI.getForecastWeather(city)
+            .then(data => {
+                dispatch(addForecastWeather(data))
             })
     }
 }
