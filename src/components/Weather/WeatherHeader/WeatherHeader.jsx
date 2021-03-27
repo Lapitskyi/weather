@@ -11,13 +11,15 @@ const WeatherHeader = (props) => {
             <div className="weather__header-item">
 
                 <ListLeft
-                    currentWeather={props.currentWeather}
+                    {...props}
                 />
 
             </div>
 
             <div className="weather__header-item">
-                <ListRigth/>
+                <ListRigth
+                    {...props}
+                />
             </div>
         </div>
     )

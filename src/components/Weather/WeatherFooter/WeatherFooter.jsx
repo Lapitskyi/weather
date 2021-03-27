@@ -19,13 +19,8 @@ const WeatherFooter = (props) => {
 
                             }</div>
                         </li>
-
-
                     )
-
                 )}
-
-
             </ul>
         </div>
     )
