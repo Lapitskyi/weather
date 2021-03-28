@@ -12,7 +12,6 @@ const Weather = (props) => {
         <div className="weather">
             <div className="container">
                 <div className="weather__inner">
-
                     <SearchCity
                         inputText={props.inputText}
                         onInputCity={props.onInputCity}
@@ -20,15 +19,9 @@ const Weather = (props) => {
                     />
 
                     <h2 className="weather__title">Weather {props.currentWeather ? props.currentWeather.name : "city"}</h2>
+                            <WeatherHeader currentWeather={props.currentWeather}/>
+                            <WeatherFooter forecastWeather={props.forecastWeather}/>
 
-                    <WeatherHeader
-                        currentWeather={props.currentWeather}
-                    />
-
-
-                    <WeatherFooter
-                        forecastWeather={props.forecastWeather}
-                    />
                 </div>
             </div>
         </div>

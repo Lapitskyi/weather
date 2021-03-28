@@ -19,9 +19,10 @@ const ListLeft = (props) => {
                     <li className="list-left__item">
                         <div className="list-left__date">
                             {props.currentWeather.dt
-                                ? `${new Date(props.currentWeather.dt * 1000).toLocaleString()}
-                        ${props.currentWeather.weather[0]['description']}`
-                                : ('SUNDAY/ SUNNY')
+                                ? `${new Date(props.currentWeather.dt * 1000).toLocaleString('en', {weekday: 'long'})}
+                                 ${new Date(props.currentWeather.dt * 1000).toLocaleDateString()} 
+                                 ${props.currentWeather.weather[0]['description']}`
+                                : ('DAY')
                             }</div>
                     </li>
                     <li className="list-left__item">
@@ -52,12 +53,8 @@ const ListLeft = (props) => {
                     <li className="list-left__item">
                         <div className="list-left__temperature"> TEMP 0C/0F</div>
                     </li>
-
                 </>
-
             }
-
-
         </ul>
 
     )

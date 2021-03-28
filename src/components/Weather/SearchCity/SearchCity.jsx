@@ -3,7 +3,7 @@ import './SearchCity.scss';
 import svgSprite from '../../../assets/images/svgSprite.svg'
 
 const SearchCity = (props) => {
-    return (
+    return (<>
         <form className="form" >
             <label className="form__label">
                 <input className="form__input"
@@ -13,6 +13,7 @@ const SearchCity = (props) => {
                        onChange={props.onInputCity}
                 />
             </label>
+
             <button className="form__btn btn" type="submit" onClick={props.onSubmitCity}>
                 <svg className="form__icon">
                     <use href={svgSprite + "#search"}></use>
@@ -20,7 +21,8 @@ const SearchCity = (props) => {
             </button>
 
         </form>
-
+            <div style={{textAlign:"end"}}>(Kyiv, London, Tokyo, Paris ....)</div>
+        </>
     )
 }
 

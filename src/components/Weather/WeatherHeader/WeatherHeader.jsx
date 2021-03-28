@@ -8,19 +8,13 @@ const WeatherHeader = (props) => {
 
     return (
         <div className="weather__header">
-            <div className="weather__header-item">
+                <div className="weather__header-item">
+                    <ListLeft {...props}/>
+                </div>
 
-                <ListLeft
-                    {...props}
-                />
-
-            </div>
-
-            <div className="weather__header-item">
-                <ListRigth
-                    {...props}
-                />
-            </div>
+                <div className="weather__header-item">
+                    <ListRigth {...props} />
+                </div>
         </div>
     )
 }
