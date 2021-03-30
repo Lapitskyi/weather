@@ -1,10 +1,15 @@
-import React from 'react';
+import React, {useEffect, useLayoutEffect} from 'react';
 import Weather from "./Weather";
 import {connect} from "react-redux";
-import {addInputCity, getWeather, getWeatherForecast} from "../../redux/weather-reducer";
+import {addInputCity, getPositionClient, getWeather, getWeatherForecast} from "../../redux/weather-reducer";
+import PropTypes from "prop-types";
 
 
 const WeatherContainer = (props) => {
+
+    useLayoutEffect(()=>{
+        props.getPositionClient()
+    },[]);
 
     const onInputCity = (e) => {
         props.addInputCity(e.target.value)
@@ -30,12 +35,22 @@ let mapStateToProps = (state) => {
     return {
         inputText: state.weathers.inputText,
         currentWeather: state.weathers.currentWeather,
-        forecastWeather: state.weathers.forecastWeather
+        forecastWeather: state.weathers.forecastWeather,
+        isLoader: state.weathers.isLoader
     }
 }
 
 export default connect(mapStateToProps, {
     addInputCity,
     getWeather,
-    getWeatherForecast
+    getWeatherForecast,
+    getPositionClient
 })(WeatherContainer)
+
+
+WeatherContainer.propTypes={
+    inputText:PropTypes.string,
+    currentWeather: PropTypes.object,
+    forecastWeather: PropTypes.array,
+    isLoader: PropTypes.bool
+}

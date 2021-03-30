@@ -11,7 +11,8 @@ const WeatherFooter = (props) => {
                     <div className="weather__footer">
                         <ul className="weather__footer-list">
                             {
-                                props.forecastWeather?.map(list =>
+                                props.forecastWeather.map((list) =>
+
                                     <li className="weather__footer-item" key={list.dt}>
                                         <h4 className="weather__footer-title">
                                             {new Date(list.dt * 1000).toLocaleString('en', {weekday: 'long'})}

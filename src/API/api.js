@@ -35,8 +35,17 @@ export const weatherAPI = {
                     // client never received a response, or request never left
                 }
             })
+    },
+
+    positionApi(){
+        return axios.get(`http://ip-api.com/json/`)
+            .then(response=>{
+                return response.data
+            })
     }
 }
+
+
 
 
 

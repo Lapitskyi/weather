@@ -17,27 +17,34 @@ const ListLeft = (props) => {
                              alt=""/>
                     </li>
                     <li className="list-left__item">
-                        <div className="list-left__date">
-                            {props.currentWeather.dt
-                                ? `${new Date(props.currentWeather.dt * 1000).toLocaleString('en', {weekday: 'long'})}
-                                 ${new Date(props.currentWeather.dt * 1000).toLocaleDateString()} 
-                                 ${props.currentWeather.weather[0]['description']}`
-                                : ('DAY')
-                            }</div>
+
+                        <ul className="sublist-left__item">
+                            <li className="sublist-left__date">
+                                {props.currentWeather.dt
+                                    ? `${new Date(props.currentWeather.dt * 1000).toLocaleString('en', {weekday: 'long'})}
+                                 ${new Date(props.currentWeather.dt * 1000).toLocaleDateString()}`
+                                    : ('DAY')
+                                }
+                            </li>
+                            <li className="sublist-left__date">
+                                {props.currentWeather.weather[0]['description']}
+
+                            </li>
+                            <li className="sublist-left__temperature">
+                                {props.currentWeather.main.temp
+                                    ? `${Math.round(props.currentWeather.main.temp - 273)} \u00B0C 
+                                ${Math.round((props.currentWeather.main.temp - 273.15) * 9 / 5 + 32)}\u00B0F`
+                                    : "0C/0F"
+                                }</li>
+                            <li
+                                className="sublist-left__wind"> {(props.currentWeather.wind.speed && props.currentWeather.wind.deg)
+                                ? `${props.currentWeather.wind.speed} m/s ${props.currentWeather.wind.deg} deg`
+                                : '0m/s 0deg'}
+                            </li>
+
+                        </ul>
                     </li>
-                    <li className="list-left__item">
-                        <div
-                            className="list-left__wind"> {(props.currentWeather.wind.speed && props.currentWeather.wind.deg)
-                            ? `${props.currentWeather.wind.speed} m/s ${props.currentWeather.wind.deg} deg`
-                            : '0m/s 0deg'}</div>
-                    </li>
-                    <li className="list-left__item">
-                        <div className="list-left__temperature">{props.currentWeather.main.temp
-                            ? `${Math.round(props.currentWeather.main.temp - 273)} \u00B0C 
-                       ${Math.round((props.currentWeather.main.temp - 273.15) * 9 / 5 + 32)}\u00B0F`
-                            : "0C/0F"
-                        }</div>
-                    </li>
+
 
                 </> :
                 <>
@@ -56,7 +63,6 @@ const ListLeft = (props) => {
                 </>
             }
         </ul>
-
     )
 }
 
