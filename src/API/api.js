@@ -38,7 +38,7 @@ export const weatherAPI = {
     },
 
     positionApi(){
-        return axios.get(`http://ip-api.com/json/`)
+        return axios.get(`https://api.ipregistry.co/?key=q8mcjxu2a207jn`)
             .then(response=>{
                 return response.data
             })

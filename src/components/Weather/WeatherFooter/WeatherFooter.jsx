@@ -4,6 +4,9 @@ import './WeatherFooter.scss'
 
 const WeatherFooter = (props) => {
 
+
+    let arr = props.forecastWeather?.filter((_, index) => index % 8 === 0);
+
     return (
         <>
             {
@@ -11,7 +14,7 @@ const WeatherFooter = (props) => {
                     <div className="weather__footer">
                         <ul className="weather__footer-list">
                             {
-                                props.forecastWeather.map((list) =>
+                                arr.map((list) =>
 
                                     <li className="weather__footer-item" key={list.dt}>
                                         <h4 className="weather__footer-title">

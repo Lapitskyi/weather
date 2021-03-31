@@ -3,6 +3,7 @@ import Weather from "./Weather";
 import {connect} from "react-redux";
 import {addInputCity, getPositionClient, getWeather, getWeatherForecast} from "../../redux/weather-reducer";
 import PropTypes from "prop-types";
+import {compose} from "redux";
 
 
 const WeatherContainer = (props) => {
@@ -40,12 +41,17 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {
-    addInputCity,
-    getWeather,
-    getWeatherForecast,
-    getPositionClient
-})(WeatherContainer)
+
+export default compose(
+    connect(mapStateToProps, {
+        addInputCity,
+        getWeather,
+        getWeatherForecast,
+        getPositionClient
+    })
+)(WeatherContainer)
+
+
 
 
 WeatherContainer.propTypes={

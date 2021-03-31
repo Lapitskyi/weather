@@ -95,8 +95,9 @@ export const getWeatherForecast = (city) => {
 export const getPositionClient = () => (dispatch) => {
     weatherAPI.positionApi()
         .then(data => {
-            dispatch(getWeather(data.city))
-            dispatch(getWeatherForecast(data.city))
+
+            dispatch(getWeather(data.location.city))
+            dispatch(getWeatherForecast(data.location.city))
         })
 }
 
