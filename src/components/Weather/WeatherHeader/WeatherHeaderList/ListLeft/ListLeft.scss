@@ -27,4 +27,16 @@
 
 }
 
-sublist-left__item{}
+
+.sublist-left{
+
+}
+.sublist-left__item+.sublist-left__item{
+  margin-top: 10px;
+}
+
+.sublist-left__item{
+  font-weight: 600;
+  line-height: 1.2;
+  text-transform: capitalize;
+}

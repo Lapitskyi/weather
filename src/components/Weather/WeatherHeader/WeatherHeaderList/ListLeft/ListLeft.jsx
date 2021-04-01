@@ -3,42 +3,43 @@ import './ListLeft.scss';
 
 
 const ListLeft = (props) => {
-
+    const {weather, dt, main, wind} = props.currentWeather || {}
     return (
 
         <ul className="list-left">
-            {props.currentWeather ?
+            {(weather, dt, main, wind) ?
                 <>
                     <li className="list-left__item">
                         <img className="list-left__img"
-                             src={props.currentWeather.weather[0]['icon']
-                                 ? `https://openweathermap.org/img/wn/${props.currentWeather.weather[0]['icon']}@2x.png`
+                             src={weather[0]['icon']
+                                 ? `https://openweathermap.org/img/wn/${weather[0]['icon']}@2x.png`
                                  : "https://via.placeholder.com/100"}
                              alt=""/>
                     </li>
                     <li className="list-left__item">
 
-                        <ul className="sublist-left__item">
-                            <li className="sublist-left__date">
-                                {props.currentWeather.dt
-                                    ? `${new Date(props.currentWeather.dt * 1000).toLocaleString('en', {weekday: 'long'})}
-                                 ${new Date(props.currentWeather.dt * 1000).toLocaleDateString()}`
+                        <ul className="sublist-left">
+                            <li className="sublist-left__item">
+                                {dt
+                                    ? `${new Date(dt * 1000).toLocaleString('en', {weekday: 'long'})}
+                                 ${new Date(dt * 1000).toLocaleDateString()}`
                                     : ('DAY')
                                 }
                             </li>
-                            <li className="sublist-left__date">
-                                {props.currentWeather.weather[0]['description']}
+                            <li className="sublist-left__item">
+                                {weather[0]['description']}
 
                             </li>
-                            <li className="sublist-left__temperature">
-                                {props.currentWeather.main.temp
-                                    ? `${Math.round(props.currentWeather.main.temp - 273)} \u00B0C 
-                                ${Math.round((props.currentWeather.main.temp - 273.15) * 9 / 5 + 32)}\u00B0F`
+                            <li className="sublist-left__item">
+                                {main.temp
+                                    ? `${Math.round(main.temp - 273)} \u00B0C 
+                                ${Math.round((main.temp - 273.15) * 9 / 5 + 32)}\u00B0F`
                                     : "0C/0F"
-                                }</li>
+                                }
+                            </li>
                             <li
-                                className="sublist-left__wind"> {(props.currentWeather.wind.speed && props.currentWeather.wind.deg)
-                                ? `${props.currentWeather.wind.speed} m/s ${props.currentWeather.wind.deg} deg`
+                                className="sublist-left__item"> {(wind.speed && wind.deg)
+                                ? `${wind.speed} m/s ${wind.deg} deg`
                                 : '0m/s 0deg'}
                             </li>
 
@@ -52,14 +53,11 @@ const ListLeft = (props) => {
                         <img className="list-left__img" src="https://via.placeholder.com/100" alt=""/>
                     </li>
                     <li className="list-left__item">
-                        <div className="list-left__date">DAY/ DESCRIPTION</div>
+                        <ul className="sublist-left">
+                            <li className="sublist-left__item">parametr</li>
+                        </ul>
                     </li>
-                    <li className="list-left__item">
-                        <div className="list-left__wind"> Wind 0m/s 0deg</div>
-                    </li>
-                    <li className="list-left__item">
-                        <div className="list-left__temperature"> TEMP 0C/0F</div>
-                    </li>
+
                 </>
             }
         </ul>
