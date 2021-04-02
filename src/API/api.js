@@ -12,7 +12,9 @@ export const weatherAPI = {
     getCurrentWeather(city){
         return instance.get(`weather?q=${city}&appid=88cbe4c153f69cbe03972ce91ccb4175`)
             .then(response =>{
-                return response.data
+                if(response.status===200){
+                    return response.data
+                }
             })
             .catch(err => {
                 if (err.response) {
@@ -26,7 +28,9 @@ export const weatherAPI = {
     getForecastWeather(city){
         return instance.get(`forecast?q=${city}&appid=88cbe4c153f69cbe03972ce91ccb4175`)
             .then(response =>{
-                return response.data
+                if(response.status===200){
+                    return response.data
+                }
             })
             .catch(err => {
                 if (err.response) {
@@ -40,7 +44,9 @@ export const weatherAPI = {
     positionApi(){
         return axios.get(`https://api.ipregistry.co/?key=q8mcjxu2a207jn`)
             .then(response=>{
-                return response.data
+                if(response.status===200){
+                    return response.data
+                }
             })
     }
 }

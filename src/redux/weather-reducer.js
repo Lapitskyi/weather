@@ -11,7 +11,8 @@ let initialState = {
     currentWeather: null,
     forecastWeather: null,
     inputText: '',
-    isLoader: false
+    isLoader: false,
+    errorWeather:false
 };
 
 const weatherReducer = (state = initialState, action) => {
@@ -40,8 +41,7 @@ const weatherReducer = (state = initialState, action) => {
         case ERROR_WEATHER:
             return {
                 state,
-                currentWeather: action.errorWeather,
-                forecastWeather: action.errorWeather,
+                errorWeather: action.errorWeather,
                 inputText: ''
             }
 
@@ -72,7 +72,7 @@ export const getWeather = (city) => {
             })
             .catch(data => {
                 dispatch(toggleIsLoader(false))
-                dispatch(errorWeather(null))
+                dispatch(errorWeather(true))
             })
     }
 }
@@ -82,12 +82,13 @@ export const getWeatherForecast = (city) => {
         dispatch(toggleIsLoader(true))
         weatherAPI.getForecastWeather(city)
             .then(data => {
+
                 dispatch(toggleIsLoader(false))
                 dispatch(addForecastWeather(data.list))
             })
             .catch(data => {
                 dispatch(toggleIsLoader(false))
-                dispatch(errorWeather(null))
+                dispatch(errorWeather(true))
             })
     }
 }
@@ -95,7 +96,6 @@ export const getWeatherForecast = (city) => {
 export const getPositionClient = () => (dispatch) => {
     weatherAPI.positionApi()
         .then(data => {
-
             dispatch(getWeather(data.location.city))
             dispatch(getWeatherForecast(data.location.city))
         })
