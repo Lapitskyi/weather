@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 
 
 const ListRigth = (props) => {
-    const {coord, weather, dt, main, wind, id, name, humidity, sys} = props.currentWeather || {}
-    console.log(props.currentWeather)
+    const {coord, main, name, sys} = props.currentWeather || {}
+
     return (
         <ul className="weather-header__list">
             {props.currentWeather ?
@@ -13,10 +13,6 @@ const ListRigth = (props) => {
                     <li className="weather-header__list-item">
                         city
                         <span>{name}</span>
-                    </li>
-                    <li className="weather-header__list-item">
-                        coord
-                        <a href={`https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat=${coord.lat}&lon=${coord.lon}&zoom=8`}>{`${coord.lat} ${coord.lon}`}</a>
                     </li>
                     <li className="weather-header__list-item">
                         temp
@@ -41,7 +37,6 @@ const ListRigth = (props) => {
                         <span>{`${new Date(sys.sunset * 1000).toLocaleTimeString('en-US')}`}</span>
                     </li>
                 </>
-
 
                 : <li className="weather-header__list-item">
                     WEATHER PARAMETERS

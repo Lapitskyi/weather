@@ -1,9 +1,13 @@
-.weather__header-text{
+.weather__header-text {
   display: flex;
   justify-content: space-between;
 }
-.weather-header__list-item{display: flex;
-  justify-content: space-between;}
-.weather-header__list-item+.weather-header__list-item{
+
+.weather-header__list-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.weather-header__list-item + .weather-header__list-item {
   margin-top: 5px;
 }

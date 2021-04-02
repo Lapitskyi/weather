@@ -2,20 +2,19 @@ import React from 'react';
 import './WeatherFooter.scss'
 
 
+
 const WeatherFooter = (props) => {
-
-
     let arr = props.forecastWeather?.filter((_, index) => index % 8 === 0);
+
 
     return (
         <>
             {
-                props.forecastWeather ?
+                props.forecastWeather &&
                     <div className="weather__footer">
                         <ul className="weather__footer-list">
                             {
                                 arr.map((list) =>
-
                                     <li className="weather__footer-item" key={list.dt}>
                                         <h4 className="weather__footer-title">
                                             {new Date(list.dt * 1000).toLocaleString('en', {weekday: 'long'})}
@@ -35,7 +34,7 @@ const WeatherFooter = (props) => {
                             }
                         </ul>
                     </div>
-                    : null
+
             }
         </>
     )

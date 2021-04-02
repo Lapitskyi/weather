@@ -8,9 +8,10 @@ import {compose} from "redux";
 
 const WeatherContainer = (props) => {
 
-    useLayoutEffect(()=>{
+    useLayoutEffect(() => {
         props.getPositionClient()
-    },[]);
+    }, []);
+
 
     const onInputCity = (e) => {
         props.addInputCity(e.target.value)
@@ -21,7 +22,7 @@ const WeatherContainer = (props) => {
         let city = props.inputText.toLowerCase();
         if (city !== '') {
             return props.getWeather(city),
-            props.getWeatherForecast(city)
+                props.getWeatherForecast(city)
         }
     }
 
@@ -52,10 +53,8 @@ export default compose(
 )(WeatherContainer)
 
 
-
-
-WeatherContainer.propTypes={
-    inputText:PropTypes.string,
+WeatherContainer.propTypes = {
+    inputText: PropTypes.string,
     currentWeather: PropTypes.object,
     forecastWeather: PropTypes.array,
     isLoader: PropTypes.bool

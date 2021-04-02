@@ -1,42 +1,16 @@
 .list-left {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows:  auto;
-  grid-gap: 10px;
-
-
-  &__item {
-
-  }
-
-  &__img {
-    margin-bottom: 10px;
-  }
-
-&__date{
-  line-height: 2;
-}
-  &__wind {
-    font-size: 16px;
-  }
-
-  &__temperature {
-    text-align: center;
-    font-size: 16px;
-  }
 
 }
-
 
 .sublist-left{
-
-}
-.sublist-left__item+.sublist-left__item{
-  margin-top: 10px;
+  grid-template-columns: 1fr;
+  display: grid;
+  grid-gap: 10px;
+  text-align: center;
 }
 
 .sublist-left__item{
-  font-weight: 600;
-  line-height: 1.2;
-  text-transform: capitalize;
+
 }

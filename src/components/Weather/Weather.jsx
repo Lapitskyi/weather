@@ -19,16 +19,13 @@ const Weather = (props) => {
                         onSubmitCity={props.onSubmitCity}
                     />
 
-                    <h2 className="weather__title">Weather
-                        {props.currentWeather
-                            ? ` ${props.currentWeather.name }, ${props.currentWeather.sys.country }`
-                            : "city"}</h2>
+                    <h2 className="weather__title">Weather {props.currentWeather ? props.currentWeather.name : "city"}</h2>
 
                     {props.isLoader ? <Preloader/>
-                        : <>
+                        :( (props.currentWeather && props.forecastWeather)&&<>
                             <WeatherHeader currentWeather={props.currentWeather}/>
                             <WeatherFooter forecastWeather={props.forecastWeather}/>
-                        </>
+                        </>)
                     }
                 </div>
             </div>
