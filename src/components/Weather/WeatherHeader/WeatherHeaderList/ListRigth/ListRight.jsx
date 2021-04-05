@@ -5,36 +5,37 @@ import PropTypes from "prop-types";
 
 const ListRigth = (props) => {
 
+    const {name, main} = props.currentWeather;
+    const {tempWeatherCel, tempWeatherFar, feelsLike, sunrise, sunset} = props.tempWeather;
     return (
         <>
             {
                 <ul className="weather-header__list">
-
                     <li className="weather-header__list-item">
                         city
-                        <span>{props.currentWeather?.name}</span>
+                        <span>{name ? name : 'name'}</span>
                     </li>
                     <li className="weather-header__list-item">
                         temp
                         <span>
-                            {`${props.tempWeather.tempWeatherCel}\u00B0C | ${props.tempWeather.tempWeatherFar}\u00B0F`}
+                            {(`${tempWeatherCel}` && `${tempWeatherFar}`) ? `${tempWeatherCel}\u00B0C | ${tempWeatherFar}\u00B0F` : 'temp'}
                         </span>
                     </li>
                     <li className="weather-header__list-item">
                         feels like
-                        <span>{`${props.tempWeather.feelsLike} \u00B0C`}</span>
+                        <span>{`${feelsLike}` ? `${feelsLike} \u00B0C` : 'frelsLike'}</span>
                     </li>
                     <li className="weather-header__list-item">
                         humidity
-                        <span>{`${props.currentWeather?.main.humidity} \u0025`}</span>
+                        <span>{`${main.humidity}` ? `${main.humidity} \u0025` : 'humidity'}</span>
                     </li>
                     <li className="weather-header__list-item">
                         sunrise
-                        <span>{`${props.tempWeather.sunrise}`}</span>
+                        <span>{sunrise ? sunrise : 'sunrise'}</span>
                     </li>
                     <li className="weather-header__list-item">
                         sunset
-                        <span>{`${props.tempWeather.sunset}`}</span>
+                        <span>{sunset ? sunset : 'sunset'}</span>
                     </li>
                 </ul>
             }
@@ -45,5 +46,13 @@ const ListRigth = (props) => {
 export default ListRigth;
 
 ListRigth.propTypes = {
-    currentWeather: PropTypes.object
+    currentWeather: PropTypes.object,
+    tempWeather:PropTypes.object,
+    name:PropTypes.string,
+    main:PropTypes.object,
+    tempWeatherCel:PropTypes.number,
+    tempWeatherFar:PropTypes.number,
+    feelsLike:PropTypes.number,
+    sunrise:PropTypes.number,
+    sunset:PropTypes.number
 }

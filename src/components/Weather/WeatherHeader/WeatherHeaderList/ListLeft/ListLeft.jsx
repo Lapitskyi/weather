@@ -1,36 +1,43 @@
 import React from 'react';
 import './ListLeft.scss';
 import notImg from '../../../../../assets/images/notImg.png'
+import PropTypes from "prop-types";
+
 
 const ListLeft = (props) => {
 
+    const {weather: [{icon, description}], wind: {speed, deg}} = props.currentWeather;
+    const {dayWeather, dateWeather, tempWeatherCel, tempWeatherFar} = props.tempWeather;
+
+
     return (
+
         <ul className="list-left">
             <li className="list-left__item">
                 <img className="list-left__img"
-                     src={props.currentWeather?.weather[0]['icon']
-                         ? `https://openweathermap.org/img/wn/${props.currentWeather.weather[0]['icon']}@2x.png`
+                     src={icon
+                         ? `https://openweathermap.org/img/wn/${icon}@2x.png`
                          : notImg}
-                     alt=""/>
+                     alt="icon"/>
             </li>
             <li className="list-left__item">
                 <ul className="sublist-left">
                     <li className="sublist-left__item">
-                        {props.tempWeather.dayWeather ? props.tempWeather.dayWeather : 'Day'}
+                        {dayWeather ? dayWeather : 'Day'}
                     </li>
                     <li className="sublist-left__item">
-                        {props.tempWeather.dateWeather ? props.tempWeather.dateWeather : 'Date'}
+                        {dateWeather ? dateWeather : 'Date'}
                     </li>
                     <li className="sublist-left__item">
-                        {props.currentWeather?.weather[0]['description']}
+                        {description ? description : 'desc'}
                     </li>
                     <li className="sublist-left__item">
-                        {`${props.tempWeather.tempWeatherCel}\u00B0C | ${props.tempWeather.tempWeatherFar}\u00B0F`}
+                        {`${tempWeatherCel}\u00B0C | ${tempWeatherFar}\u00B0F`}
 
                     </li>
                     <li className="sublist-left__item">
-                        {(props.currentWeather?.wind.speed && props.currentWeather?.wind.deg)
-                            ? `${props.currentWeather?.wind.speed} m/s ${props.currentWeather?.wind.deg} deg`
+                        {speed
+                            ? `${speed} m/s ${deg} deg`
                             : '0m/s 0deg'}
                     </li>
                 </ul>
@@ -41,3 +48,19 @@ const ListLeft = (props) => {
 
 
 export default ListLeft;
+ListLeft.propTypes = {
+    currentWeather: PropTypes.object,
+    tempWeather:PropTypes.object,
+
+    weather:PropTypes.array,
+    wind:PropTypes.object,
+    description:PropTypes.string,
+    speed:PropTypes.number,
+    deg:PropTypes.number,
+
+    tempWeatherCel:PropTypes.number,
+    tempWeatherFar:PropTypes.number,
+    dayWeather:PropTypes.number,
+    dateWeather:PropTypes.number,
+
+}

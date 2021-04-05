@@ -21,19 +21,19 @@ const WeatherContainer = (props) => {
 
     const tempWeather = useMemo(() => {
         if (props.currentWeather) {
-            const dateWeather = new Date(props.currentWeather.dt * 1000).toLocaleDateString();
-            const dayWeather = new Date(props.currentWeather.dt * 1000).toLocaleString('en', {weekday: 'long'});
-            const tempWeatherCel = Math.round(props.currentWeather.main.temp - 273);
-            const tempWeatherFar = Math.round((props.currentWeather.main.temp - 273.15) * 9 / 5 + 32);
+            const dateWeather = new Date(props.currentWeather?.dt * 1000).toLocaleDateString();
+            const dayWeather = new Date(props.currentWeather?.dt * 1000).toLocaleString('en', {weekday: 'long'});
+            const tempWeatherCel = Math.round(props.currentWeather?.main?.temp - 273);
+            const tempWeatherFar = Math.round((props.currentWeather?.main?.temp - 273.15) * 9 / 5 + 32);
 
-            const feelsLike = Math.round(props.currentWeather.main['feels_like'] - 273);
-            const sunrise = new Date(props.currentWeather.sys.sunrise * 1000).toLocaleTimeString('en-US');
-            const sunset = new Date(props.currentWeather.sys.sunset * 1000).toLocaleTimeString('en-US')
+            const feelsLike = Math.round((props.currentWeather?.main?.feels_like) - 273);
+            const sunrise = new Date(props.currentWeather?.sys?.sunrise * 1000).toLocaleTimeString('en-US');
+            const sunset = new Date(props.currentWeather?.sys?.sunset * 1000).toLocaleTimeString('en-US')
 
             return {dayWeather, dateWeather, tempWeatherCel, tempWeatherFar, feelsLike, sunrise, sunset};
         }
         return errorWeather;
-    }, [props]);
+    }, [props.currentWeather]);
 
 
     const onInputCity = (e) => {

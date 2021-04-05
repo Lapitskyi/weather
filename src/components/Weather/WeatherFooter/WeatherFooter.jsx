@@ -3,7 +3,10 @@ import './WeatherFooter.scss'
 
 
 const WeatherFooter = (props) => {
-    let arr = props.forecastWeather?.filter((_, index) => index % 8 === 0);
+    let arr = props.forecastWeather?.filter((_, index) => index % 9 === 0);
+
+
+
 
     return (
         <>

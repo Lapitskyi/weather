@@ -5,14 +5,14 @@ const ADD_INPUT_CITY = 'ADD_INPUT_CITY';
 const ADD_CURRENT_WEATHER = 'ADD_CURRENT_WEATHER';
 const ADD_FORECAST_WEATHER = 'ADD_FORECAST_WEATHER';
 const ERROR_WEATHER = 'ERROR_WEATHER';
-const TOGGLE_ISLOADER ='TOGGLE_ISLOADER';
+const TOGGLE_ISLOADER = 'TOGGLE_ISLOADER';
 
 let initialState = {
     currentWeather: null,
     forecastWeather: null,
     inputText: '',
     isLoader: false,
-    errorWeather:false
+    errorWeather: undefined
 };
 
 const weatherReducer = (state = initialState, action) => {
@@ -47,7 +47,7 @@ const weatherReducer = (state = initialState, action) => {
 
         case TOGGLE_ISLOADER:
             return {
-                ...state,isLoader:action.isLoader
+                ...state, isLoader: action.isLoader
             }
 
         default:
@@ -60,7 +60,7 @@ export const addInputCity = (text) => ({type: ADD_INPUT_CITY, text})
 export const addCurrentWeather = (currentWeather) => ({type: ADD_CURRENT_WEATHER, currentWeather})
 export const addForecastWeather = (forecastWeather) => ({type: ADD_FORECAST_WEATHER, forecastWeather})
 export const errorWeather = (errorWeather) => ({type: ERROR_WEATHER, errorWeather})
-export const toggleIsLoader = (isLoader)=>({type:TOGGLE_ISLOADER,isLoader});
+export const toggleIsLoader = (isLoader) => ({type: TOGGLE_ISLOADER, isLoader});
 
 export const getWeather = (city) => {
     return (dispatch) => {
@@ -72,7 +72,7 @@ export const getWeather = (city) => {
             })
             .catch(data => {
                 dispatch(toggleIsLoader(false))
-                dispatch(errorWeather(true))
+                dispatch(errorWeather(null))
             })
     }
 }
@@ -88,7 +88,7 @@ export const getWeatherForecast = (city) => {
             })
             .catch(data => {
                 dispatch(toggleIsLoader(false))
-                dispatch(errorWeather(true))
+                dispatch(errorWeather(null))
             })
     }
 }
