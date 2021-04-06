@@ -1,16 +1,9 @@
-import * as axios from "axios";
-
-
-const instance = axios.create({
-    baseURL: `https://api.openweathermap.org/data/2.5/`,
-    // header: {"API key":"88cbe4c153f69cbe03972ce91ccb4175"}
-
-})
-
+import instance from './api';
 
 export const weatherAPI = {
+
     getCurrentWeather(city) {
-        return instance.get(`weather?q=${city}&appid=88cbe4c153f69cbe03972ce91ccb4175`)
+        return instance.get(`weather?q=${city}&appid=${process.env.REACT_APP_API_KEY_WEATHER}`)
             .then(response => {
                 return response.data
             })
@@ -24,7 +17,7 @@ export const weatherAPI = {
     },
 
     getForecastWeather(city) {
-        return instance.get(`forecast?q=${city}&appid=88cbe4c153f69cbe03972ce91ccb4175`)
+        return instance.get(`forecast?q=${city}&appid=${process.env.REACT_APP_API_KEY_WEATHER}`)
             .then(response => {
                 return response.data
             })
@@ -37,20 +30,5 @@ export const weatherAPI = {
             })
     },
 
-    positionApi() {
-        return axios.get(`https://api.ipregistry.co/?key=q8mcjxu2a207jn`)
-            .then(response => {
-                if (response.status === 200) {
-                    return response.data
-                }
-            })
-    }
+
 }
-
-
-
-
-
-
-
-

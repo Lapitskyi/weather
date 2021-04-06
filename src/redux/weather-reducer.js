@@ -1,4 +1,5 @@
-import {weatherAPI} from "../API/api";
+import {weatherAPI} from "../service/weather";
+import {positionAPI} from "../service/position";
 
 
 const ADD_INPUT_CITY = 'ADD_INPUT_CITY';
@@ -80,7 +81,7 @@ export const getWeatherForecast = (city) => {
 }
 
 export const getPositionClient = () => (dispatch) => {
-    weatherAPI.positionApi()
+    positionAPI.getPosition()
         .then(data => {
             dispatch(getWeather(data.location.city))
             dispatch(getWeatherForecast(data.location.city))

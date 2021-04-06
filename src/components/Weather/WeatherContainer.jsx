@@ -25,7 +25,7 @@ const WeatherContainer = (props) => {
                 dt,
                 main: {temp, feels_like, humidity},
                 sys: {sunrise, sunset}
-            } = props.currentWeather ;
+            } = props.currentWeather  ;
 
             const dateWeather = new Date(dt * 1000).toLocaleDateString();
             const dayWeather = new Date(dt * 1000).toLocaleString('en', {weekday: 'long'});
