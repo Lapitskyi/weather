@@ -6,8 +6,14 @@ import PropTypes from "prop-types";
 
 const ListLeft = (props) => {
 
-    const {weather: [{icon, description}], wind: {speed, deg}} = props.currentWeather;
-    const {dayWeather, dateWeather, tempWeatherCel, tempWeatherFar} = props.tempWeather;
+    const {  dayWeather,
+        dateWeather,
+        tempWeatherCel,
+        tempWeatherFar,
+        icon,
+        description,
+        speed,
+        deg} = props.tempWeather;
 
 
     return (
@@ -50,17 +56,17 @@ const ListLeft = (props) => {
 export default ListLeft;
 ListLeft.propTypes = {
     currentWeather: PropTypes.object,
-    tempWeather:PropTypes.object,
+    tempWeather: PropTypes.object,
 
-    weather:PropTypes.array,
-    wind:PropTypes.object,
-    description:PropTypes.string,
-    speed:PropTypes.number,
-    deg:PropTypes.number,
+    weather: PropTypes.array,
+    wind: PropTypes.object,
+    description: PropTypes.string,
+    speed: PropTypes.number,
+    deg: PropTypes.number,
 
-    tempWeatherCel:PropTypes.number,
-    tempWeatherFar:PropTypes.number,
-    dayWeather:PropTypes.number,
-    dateWeather:PropTypes.number,
+    tempWeatherCel: PropTypes.number,
+    tempWeatherFar: PropTypes.number,
+    dayWeather: PropTypes.number,
+    dateWeather: PropTypes.number,
 
 }

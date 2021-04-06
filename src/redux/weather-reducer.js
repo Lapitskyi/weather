@@ -4,7 +4,7 @@ import {weatherAPI} from "../API/api";
 const ADD_INPUT_CITY = 'ADD_INPUT_CITY';
 const ADD_CURRENT_WEATHER = 'ADD_CURRENT_WEATHER';
 const ADD_FORECAST_WEATHER = 'ADD_FORECAST_WEATHER';
-const ERROR_WEATHER = 'ERROR_WEATHER';
+
 const TOGGLE_ISLOADER = 'TOGGLE_ISLOADER';
 
 let initialState = {
@@ -12,7 +12,6 @@ let initialState = {
     forecastWeather: null,
     inputText: '',
     isLoader: false,
-    errorWeather: undefined
 };
 
 const weatherReducer = (state = initialState, action) => {
@@ -38,12 +37,6 @@ const weatherReducer = (state = initialState, action) => {
                 inputText: ''
             }
 
-        case ERROR_WEATHER:
-            return {
-                state,
-                errorWeather: action.errorWeather,
-                inputText: ''
-            }
 
         case TOGGLE_ISLOADER:
             return {
@@ -59,7 +52,7 @@ const weatherReducer = (state = initialState, action) => {
 export const addInputCity = (text) => ({type: ADD_INPUT_CITY, text})
 export const addCurrentWeather = (currentWeather) => ({type: ADD_CURRENT_WEATHER, currentWeather})
 export const addForecastWeather = (forecastWeather) => ({type: ADD_FORECAST_WEATHER, forecastWeather})
-export const errorWeather = (errorWeather) => ({type: ERROR_WEATHER, errorWeather})
+
 export const toggleIsLoader = (isLoader) => ({type: TOGGLE_ISLOADER, isLoader});
 
 export const getWeather = (city) => {
@@ -70,10 +63,7 @@ export const getWeather = (city) => {
                 dispatch(toggleIsLoader(false))
                 dispatch(addCurrentWeather(data))
             })
-            .catch(data => {
-                dispatch(toggleIsLoader(false))
-                dispatch(errorWeather(null))
-            })
+
     }
 }
 
@@ -82,14 +72,10 @@ export const getWeatherForecast = (city) => {
         dispatch(toggleIsLoader(true))
         weatherAPI.getForecastWeather(city)
             .then(data => {
-
                 dispatch(toggleIsLoader(false))
                 dispatch(addForecastWeather(data.list))
             })
-            .catch(data => {
-                dispatch(toggleIsLoader(false))
-                dispatch(errorWeather(null))
-            })
+
     }
 }
 
