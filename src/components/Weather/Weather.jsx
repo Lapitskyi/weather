@@ -8,7 +8,6 @@ import Preloader from "../Preloader/Preloader";
 import NotFound from "../Error/NotFound";
 
 
-
 const Weather = (props) => {
 
     return (
@@ -25,10 +24,11 @@ const Weather = (props) => {
 
                     {(props.isLoader ? <Preloader/> : null)
                     ||
-                    ((props.tempWeather && props.tempWeatherFiveDays)? <>
-                        <WeatherHeader tempWeather={props.tempWeather}/>
-                        <WeatherFooter tempWeatherFiveDays={props.tempWeatherFiveDays}/>
-                    </>:<NotFound/>)
+                    ((props.tempWeather && props.tempWeatherFiveDays) ?
+                        <>
+                            <WeatherHeader tempWeather={props.tempWeather}/>
+                            <WeatherFooter tempWeatherFiveDays={props.tempWeatherFiveDays}/>
+                        </> : <NotFound/>)
                     }
                 </div>
             </div>

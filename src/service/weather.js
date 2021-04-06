@@ -1,9 +1,18 @@
-import instance from './api';
+import axios from "axios";
+
+const instance = axios.create({
+    baseURL: `https://api.openweathermap.org/data/2.5/`,
+    method: 'get',
+    params: {
+        'appid': `${process.env.REACT_APP_API_KEY_WEATHER}`
+    },
+
+});
+
 
 export const weatherAPI = {
-
     getCurrentWeather(city) {
-        return instance.get(`weather?q=${city}&appid=${process.env.REACT_APP_API_KEY_WEATHER}`)
+        return instance(`weather?q=${city}`)
             .then(response => {
                 return response.data
             })
@@ -17,7 +26,7 @@ export const weatherAPI = {
     },
 
     getForecastWeather(city) {
-        return instance.get(`forecast?q=${city}&appid=${process.env.REACT_APP_API_KEY_WEATHER}`)
+        return instance(`forecast?q=${city}`)
 
             .then(response => {
                 return response.data

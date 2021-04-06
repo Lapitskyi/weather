@@ -51,10 +51,9 @@ const weatherReducer = (state = initialState, action) => {
 }
 
 
-export const addInputCity = (text) => ({type: ADD_INPUT_CITY, text})
-export const addCurrentWeather = (currentWeather) => ({type: ADD_CURRENT_WEATHER, currentWeather})
-export const addForecastWeather = (forecastWeather) => ({type: ADD_FORECAST_WEATHER, forecastWeather})
-
+export const addInputCity = (text) => ({type: ADD_INPUT_CITY, text});
+export const addCurrentWeather = (currentWeather) => ({type: ADD_CURRENT_WEATHER, currentWeather});
+export const addForecastWeather = (forecastWeather) => ({type: ADD_FORECAST_WEATHER, forecastWeather});
 export const toggleIsLoader = (isLoader) => ({type: TOGGLE_ISLOADER, isLoader});
 
 export const getWeather = (city) => {
@@ -65,7 +64,10 @@ export const getWeather = (city) => {
                 dispatch(toggleIsLoader(false))
                 dispatch(addCurrentWeather(data))
             })
-
+            .catch(() => {
+                    dispatch(toggleIsLoader(false))
+                }
+            )
     }
 }
 
@@ -77,11 +79,10 @@ export const getWeatherForecast = (city) => {
                 dispatch(toggleIsLoader(false))
                 dispatch(addForecastWeather(data.list))
             })
-            .catch(data => {
+            .catch(() => {
                     dispatch(toggleIsLoader(false))
                 }
             )
-
     }
 }
 
@@ -91,10 +92,7 @@ export const getPositionClient = () => (dispatch) => {
             dispatch(getWeather(data.location.city))
             dispatch(getWeatherForecast(data.location.city))
         })
-        .catch(data => {
-                dispatch(toggleIsLoader(false))
-            }
-        )
+
 
 }
 
