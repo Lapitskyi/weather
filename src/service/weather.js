@@ -3,7 +3,7 @@ import instance from './api';
 export const weatherAPI = {
 
     getCurrentWeather(city) {
-        return instance.get(`weather?q=${city}&appid=${process.env.REACT_APP_API_KEY_WEATHER}`)
+        return instance.get(`weather?q=${city}&appid=${process.env.REACT_APP_VERCEL_ENV_API_KEY_WEATHER}`)
             .then(response => {
                 return response.data
             })
@@ -17,7 +17,7 @@ export const weatherAPI = {
     },
 
     getForecastWeather(city) {
-        return instance.get(`forecast?q=${city}&appid=${process.env.REACT_APP_API_KEY_WEATHER}`)
+        return instance.get(`forecast?q=${city}&appid=${process.env.REACT_APP_VERCEL_ENV_API_KEY_WEATHER}`)
             .then(response => {
                 return response.data
             })
