@@ -9,7 +9,7 @@ export const weatherAPI = {
             })
             .catch(err => {
                 if (err.response) {
-                    return err.response.data
+
                 } else if (err.request) {
                     // client never received a response, or request never left
                 }
@@ -18,12 +18,13 @@ export const weatherAPI = {
 
     getForecastWeather(city) {
         return instance.get(`forecast?q=${city}&appid=${process.env.REACT_APP_API_KEY_WEATHER}`)
+
             .then(response => {
                 return response.data
             })
             .catch(err => {
                 if (err.response) {
-                    return err.response.data
+
                 } else if (err.request) {
                     // client never received a response, or request never left
                 }

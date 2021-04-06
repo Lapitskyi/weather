@@ -123,6 +123,3 @@ WeatherContainer.propTypes = {
     forecastWeather: PropTypes.array,
     isLoader: PropTypes.bool,
 }
-WeatherContainer.defaultProps = {
-    name: 'city',
-}
