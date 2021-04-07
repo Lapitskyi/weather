@@ -6,6 +6,7 @@ import WeatherHeader from "./WeatherHeader/WeatherHeader";
 import SearchCity from "./SearchCity/SearchCity";
 import Preloader from "../Preloader/Preloader";
 import NotFound from "../Error/NotFound";
+import PropTypes from "prop-types";
 
 
 const Weather = (props) => {
@@ -37,3 +38,14 @@ const Weather = (props) => {
 }
 
 export default Weather;
+
+Weather.propTypes = {
+    inputText: PropTypes.string,
+    onInputCity: PropTypes.func,
+    onSubmitCity: PropTypes.func,
+
+    tempWeather: PropTypes.object,
+    tempWeatherFiveDays: PropTypes.array,
+    name: PropTypes.string,
+    isLoader:PropTypes.bool,
+}

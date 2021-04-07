@@ -1,3 +1,4 @@
+import React from "react";
 import './App.scss';
 import WeatherContainer from "./components/Weather/WeatherContainer";
 

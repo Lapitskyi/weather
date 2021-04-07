@@ -1,5 +1,6 @@
 import React from 'react';
 import './WeatherFooter.scss'
+import PropTypes from "prop-types";
 
 
 const WeatherFooter = (props) => {
@@ -38,3 +39,13 @@ const WeatherFooter = (props) => {
 
 
 export default WeatherFooter;
+
+WeatherFooter.propTypes = {
+    tempWeatherFiveDays: PropTypes.array,
+    weatherDay: PropTypes.number,
+    weatherDate: PropTypes.number,
+    weatherTempCel: PropTypes.number,
+    weatherTempFar: PropTypes.number,
+    weatherIcon: PropTypes.image,
+    weatherDescription: PropTypes.number,
+}

@@ -96,15 +96,12 @@ const WeatherContainer = (props) => {
     />
 }
 
-let mapStateToProps = (state) => {
-    return {
-        inputText: state.weathers.inputText,
-        currentWeather: state.weathers.currentWeather,
-        forecastWeather: state.weathers.forecastWeather,
-        isLoader: state.weathers.isLoader,
-
-    }
-}
+const mapStateToProps = ({weathers}) => ({
+        inputText: weathers.inputText,
+        currentWeather: weathers.currentWeather,
+        forecastWeather: weathers.forecastWeather,
+        isLoader: weathers.isLoader,
+})
 
 
 export default compose(
@@ -122,4 +119,11 @@ WeatherContainer.propTypes = {
     currentWeather: PropTypes.object,
     forecastWeather: PropTypes.array,
     isLoader: PropTypes.bool,
+
+    addInputCity:PropTypes.func,
+    getWeather:PropTypes.func,
+    getWeatherForecast:PropTypes.func,
+    getPositionClient:PropTypes.func,
+
+
 }

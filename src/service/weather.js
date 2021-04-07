@@ -18,7 +18,7 @@ export const weatherAPI = {
             })
             .catch(err => {
                 if (err.response) {
-
+                    // client never received a response, or request never left
                 } else if (err.request) {
                     // client never received a response, or request never left
                 }
@@ -33,7 +33,7 @@ export const weatherAPI = {
             })
             .catch(err => {
                 if (err.response) {
-
+// client never received a response, or request never left
                 } else if (err.request) {
                     // client never received a response, or request never left
                 }
